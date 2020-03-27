@@ -16,7 +16,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Eduarte.Net.Models\Eduarte.Net.Models.csproj" />
-      <ProjectReference Include="..\Eduarte.Net.OAuth\Eduarte.Net.OAuth.csproj" />
     </ItemGroup>
 
 </Project>
