@@ -6,7 +6,7 @@
         <PackageVersion>1.0.0-alpha.1</PackageVersion>
         <Authors>Typiqally</Authors>
         <PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.txt</PackageLicenseUrl>
-        <RepositoryUrl>https://github.com/Typiqally/dotnetcore-oauth</RepositoryUrl>
+        <RepositoryUrl>https://github.com/Typiqally/Eduarte.Net</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
