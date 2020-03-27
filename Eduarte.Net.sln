@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduarte.Net.Rest", "Eduarte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduarte.Net.Models", "Eduarte.Net.Models\Eduarte.Net.Models.csproj", "{1C03423B-8807-4808-90F9-D6B23DA020ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eduarte.Net.OAuth", "Eduarte.Net.OAuth\Eduarte.Net.OAuth.csproj", "{ABA6A6AC-6BC0-45C2-835E-C97806413408}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +24,5 @@ Global
 		{1C03423B-8807-4808-90F9-D6B23DA020ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C03423B-8807-4808-90F9-D6B23DA020ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C03423B-8807-4808-90F9-D6B23DA020ED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ABA6A6AC-6BC0-45C2-835E-C97806413408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ABA6A6AC-6BC0-45C2-835E-C97806413408}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ABA6A6AC-6BC0-45C2-835E-C97806413408}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ABA6A6AC-6BC0-45C2-835E-C97806413408}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

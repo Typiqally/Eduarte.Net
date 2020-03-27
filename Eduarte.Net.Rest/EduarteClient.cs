@@ -1,51 +1,47 @@
 ﻿using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Eduarte.Net.Models;
-using Eduarte.Net.OAuth;
-using Eduarte.Net.OAuth.Extensions;
+using NETCore.OAuth.Client;
+using NETCore.OAuth.Client.Extensions;
+using NETCore.OAuth.Core;
+using NETCore.OAuth.Core.Extensions;
 
 namespace Eduarte.Net.Rest
 {
-	public class EduarteClient : IEduarteClient
-	{
-		private readonly OAuthHttpClient _oAuthHttpClient;
+    public class EduarteClient : IEduarteClient
+    {
+        private readonly OAuthHttpClient _oAuthHttpClient;
 
-		public EduarteClient(ApplicationUrl applicationUrl, OAuthClient authClient, TokenResponse token)
-		{
-			_oAuthHttpClient = new OAuthHttpClient(authClient, token)
-			{
-				BaseAddress = applicationUrl.RestUri.Normalize(),
-				DefaultRequestHeaders =
-				{
-					Accept = {MediaTypeWithQualityHeaderValue.Parse("application/json")},
-				}
-			};
+        public EduarteClient(ApplicationUrl applicationUrl, OAuthClient authClient, TokenResponse token)
+        {
+            _oAuthHttpClient = new OAuthHttpClient(authClient, token);
+            _oAuthHttpClient.HttpClient.BaseAddress = applicationUrl.RestUri.Normalize();
+            _oAuthHttpClient.HttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
+        }
 
-			_oAuthHttpClient.SetBearerToken(token.AccessToken);
-		}
+        public async Task<List<Appointment>> RequestAppointmentsAsync(AppointmentsFilter filter = null)
+        {
+            var uri = "afspraak";
 
-		public async Task<List<Appointment>> RequestAppointmentsAsync(AppointmentsFilter filter = null)
-		{
-			var uri = "afspraak";
+            if (filter != null)
+            {
+                uri = uri.AppendQueryParameters(filter.Parameters);
+            }
 
-			if (filter != null)
-			{
-				uri = uri.AppendQueryParameters(filter.Parameters);
-			}
+            var requestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
+            var response = await _oAuthHttpClient.SendAsync<ItemCollectionResult<Appointment>>(requestMessage);
 
-			var response = await _oAuthHttpClient.ExecuteRequestAsync<ItemCollectionResult<Appointment>>(uri);
+            var collection = response.Data;
+            return collection.Items;
+        }
 
-			var collection = response.Data;
-			return collection.Items;
-		}
+        public async Task<PersonalUser> RequestCurrentUserAsync()
+        {
+            var requestMessage = new HttpRequestMessage(HttpMethod.Get, "account/me");
+            var response = await _oAuthHttpClient.SendAsync<PersonalUser>(requestMessage);
 
-		public async Task<PersonalUser> RequestCurrentUserAsync()
-		{
-			var response = await _oAuthHttpClient.ExecuteRequestAsync<PersonalUser>("account/me");
-
-			return response.Data;
-		}
-	}
+            return response.Data;
+        }
+    }
 }

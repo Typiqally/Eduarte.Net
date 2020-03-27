@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Eduarte.Net.Models;
-using Eduarte.Net.OAuth.Extensions;
+using NETCore.OAuth.Client.Extensions;
 
 namespace Eduarte.Net.Rest
 {
@@ -30,7 +30,7 @@ namespace Eduarte.Net.Rest
 
 		public async Task<ApplicationInformation> RequestApplicationInformation()
 		{
-			var response = await _httpClient.ExecuteRequestAsync<ApplicationInformation>(_uri.ToString());
+			var response = await _httpClient.SendAsync<ApplicationInformation>(_uri.ToString());
 			return response.Data;
 		}
 
@@ -39,7 +39,7 @@ namespace Eduarte.Net.Rest
 			var applicationInformation = await RequestApplicationInformation();
 			var organisationsUri = $"{applicationInformation.AuthenticationUri}app/endpoints";
 
-			var response = await _httpClient.ExecuteRequestAsync<ItemCollectionResult<ApplicationUrl>>(organisationsUri);
+			var response = await _httpClient.SendAsync<ItemCollectionResult<ApplicationUrl>>(organisationsUri);
 			
 			var collection = response.Data;
 			return collection.Items;
