@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>1.0.0-alpha.1</PackageVersion>
+        <PackageVersion>1.0.0-alpha.2</PackageVersion>
         <Authors>Typiqally</Authors>
         <PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.txt</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/Typiqally/Eduarte.Net</RepositoryUrl>
@@ -11,7 +11,7 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.AspNetCore.WebUtilities" Version="2.2.0" />
-      <PackageReference Include="NETCore.OAuth.Client" Version="1.0.0-alpha.2" />
+      <PackageReference Include="NETCore.OAuth.Client" Version="1.0.0-alpha.3" />
     </ItemGroup>
 
     <ItemGroup>
